@@ -1,5 +1,5 @@
 # CURSO python3
-## Python para principiantes
+## Python 4 rookies
 
 ### INDICE
 ### [1. Primer acercamiento al Scripting](http://192.168.0.150:8088/ruben/python_para_principiantes/src/branch/master#1-primer-acercamiento-al-scripting)
