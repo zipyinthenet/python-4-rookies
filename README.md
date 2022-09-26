@@ -1352,15 +1352,118 @@ print(resultado)  # Salida: False
 
 #### Metodos de Sustitucion
 
-##### x
+##### Dar formato a una cadena , sustituyendo texto dinamicamente
 
-##### x
+metodo: format(*args, **kwargs)
 
-##### x
+retorna: la cadena formateada
 
-##### x
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> cadena = "bienvenido a mi aplicación {0}"
+>>> cadena.format("en Python")
+bienvenido a mi aplicación en Python
+```
 
-##### x
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> cadena = "Importe bruto: ${0} + IVA: ${1} = Importe neto: {2}"
+>>> cadena.format(100, 21, 121)
+Importe bruto: $100 + IVA: $21 = Importe neto: 121
+```
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> cadena = "Importe bruto: ${bruto} + IVA: ${iva} = Importe neto: {neto}"
+>>> cadena.format(bruto=100, iva=21, neto=121)
+Importe bruto: $100 + IVA: $21 = Importe neto: 121
+```
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> cadena = "Importe bruto: ${bruto} + IVA: ${iva} = Importe neto: {neto}"
+>>> cadena.format(bruto=100, iva=21, neto=121)
+Importe bruto: $100 + IVA: $21 = Importe neto: 121
+```
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> cadena = "Importe bruto: ${bruto} + IVA: ${iva} = Importe neto: {neto}"
+>>> cadena.format(bruto=100, iva=100 * 21 / 100, neto=100 * 21 / 100 + 100)
+Importe bruto: $100 + IVA: $21 = Importe neto: 121
+```
+
+##### Reemplazar texto en una cadena
+
+metodo: replace("busqueda", "reemplazo")
+
+retorna: la cadena reemplazada
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> buscada = "nombre apellido"
+>>> reemplazo = "Juan Pérez"
+>>> "Estimado Sr. nombre apellido:".replace(buscada, reemplazo)
+Estimado Sr. Juan Pérez:
+```
+
+##### Eliminar caracteres a la izquierda y derecha de una cadena
+
+metodo: strip(["caracter"])
+
+retorna: la cadena sustituida
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> cadena = " www.ejemplo.com "
+>>> cadena.strip()
+www.ejemplo.com
+>>> cadena.strip(' ')
+www.ejemplo.com
+```
+
+##### Eliminar caracteres a la izquierda de una cadena
+
+metodo: lstrip(["caracter"])
+
+retorna: la cadena sustituida
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> cadena = "www.ejemplo.com"
+>>> cadena.lstrip("w." )
+ejemplo.com
+```
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> cadena = "    www.ejemplo.com"
+>>> cadena.lstrip()
+www.ejemplo.com
+```
+
+##### Eliminar caracteres a la derecha de una cadena
+
+metodo: rstrip(["caracter"])
+
+retorna: la cadena sustituida
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> cadena = "www.ejemplo.com    "
+>>> cadena.rstrip( )
+www.ejemplo.com
+```
 
 #### Metodos de union y division
 
