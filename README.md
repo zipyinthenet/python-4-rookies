@@ -2,27 +2,27 @@
 ## Python 4 rookies
 
 ### INDICE
-### [1. Primer acercamiento al Scripting](http://192.168.0.150:8088/ruben/python_para_principiantes/src/branch/master#1-primer-acercamiento-al-scripting)
+### [1. Primer acercamiento al Scripting](https://github.com/zipyinthenet/python-4-rookies#1-primer-acercamiento-al-scripting-1)
 
-### [2. Acerca de Python](http://192.168.0.150:8088/ruben/python_para_principiantes/src/branch/master#2-acerca-de-python)
+### [2. Acerca de Python](https://github.com/zipyinthenet/python-4-rookies#2-acerca-de-python-1)
 
-### [3. Elementos del Lenguaje](http://192.168.0.150:8088/ruben/python_para_principiantes/src/branch/master#3-elementos-del-lenguaje)
+### [3. Elementos del Lenguaje](https://github.com/zipyinthenet/python-4-rookies#3-elementos-del-lenguaje-1)
 
-### [4. Codificacion de caracteres](http://192.168.0.150:8088/ruben/python_para_principiantes/src/branch/master#4-codificacion-de-caracteres)
+### [4. Codificacion de caracteres](https://github.com/zipyinthenet/python-4-rookies#4-codificacion-de-caracteres-1)
 
-### [5. Tipos de datos complejos](http://192.168.0.150:8088/ruben/python_para_principiantes/src/branch/master#5-tipos-de-datos-complejos)
+### [5. Tipos de datos complejos](https://github.com/zipyinthenet/python-4-rookies#5-tipos-de-datos-complejos-1)
 
-### [6. Estructuras de Control de Flujo](http://192.168.0.150:8088/ruben/python_para_principiantes/src/branch/master#6-estructuras-de-control-de-flujo)
+### [6. Estructuras de Control de Flujo](https://github.com/zipyinthenet/python-4-rookies#6-estructuras-de-control-de-flujo-1)
 
-### [7. Funciones](http://192.168.0.150:8088/ruben/python_para_principiantes/src/branch/master#7-funciones)
+### [7. Funciones](https://github.com/zipyinthenet/python-4-rookies#7-funciones-1)
 
-### [8. Inyeccion de variables](http://192.168.0.150:8088/ruben/python_para_principiantes/src/branch/master#8-inyeccion-de-variables)
+### [8. Inyeccion de variables](https://github.com/zipyinthenet/python-4-rookies#8-inyeccion-de-variables-1)
 
-### [9. Importacion de modulos](http://192.168.0.150:8088/ruben/python_para_principiantes/src/branch/master#9-importacion-de-modulos)
+### [9. Importacion de modulos](https://github.com/zipyinthenet/python-4-rookies#9-importacion-de-modulos-1)
 
-### [10. Metodos de manipulacion de variables](http://192.168.0.150:8088/ruben/python_para_principiantes/src/branch/master#10-metodos-de-manipulacion-de-variables)
+### [10. Metodos de manipulacion de variables](https://github.com/zipyinthenet/python-4-rookies#10-metodos-de-manipulacion-de-variables-1)
 
-### [11. Manipulacion de cadenas de texto](http://192.168.0.150:8088/ruben/python_para_principiantes/src/branch/master#11-manipulacion-de-cadenas-de-texto)
+### [11. Manipulacion de cadenas de texto](https://github.com/zipyinthenet/python-4-rookies#11-manipulacion-de-cadenas-de-texto-1)
 
 ### 12. Manipulacion de listas y tuplas
 
