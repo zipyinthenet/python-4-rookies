@@ -1469,8 +1469,81 @@ www.ejemplo.com
 
 ##### Unir una cadena de forma iterativa
 
+metodo: join (iterable)
+
+retorna: la cadena unida con el iterable (la cadena es separada por cada uno de los elementos del iterable)
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> rellenos = ("Nº 0000-0", "-0000 (ID: ", ")")
+>>> numero = "275"
+>>> numero_factura = numero.join(rellenos)
+>>> numero_factura
+Nº 0000-0275-0000 (ID: 275)
+```
+
 ##### Partir una cadena en tres partes, utilizando un separador
+
+metodo: partition("separador")
+
+retorna: una tupla de tres elementos dodne el primero es el contenido de la cadena previo al separador, el segundo , el separador mismo y el tercero, el contenido de la cadena posterios al separador.
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> url = "https://www.ejemplo.com"
+>>> tupla = url.partition("www.")
+>>> tupla
+('https://', 'www.', 'ejemplo.com')
+>>> protocolo, separador, dominio = tupla
+>>>> "Protocolo: {0}\nDominio: {1}".format(protocolo, dominio)
+Protocolo: https://
+Dominio: ejemplo.com
+```
 
 ##### Partir una cadena en varias partes, utilizando un separador
 
+metodo: split("separador")
+
+retorna: una lista con todos elementos encontrados al dividir la cadena por un separador
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> keywords = "python, guia, curso".split(", ")
+>>> keywords
+['python', 'guia', 'curso']
+```
+
 ##### Partir una cadena en lineas
+
+metodo: splitlines()
+
+retorna: una lista donde cada elemento es una fraccion de la cadena dividida en lineas
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> texto = """Linea 1
+Linea 2
+Linea 3
+Linea 4
+"""
+>>> texto.splitlines()
+['Linea 1', 'Linea 2', 'Linea 3', 'Linea 4']
+
+>>> texto = "Linea 1\nLinea 2\nlinea 3"
+>>> texto.splitlines()
+['Linea 1', 'Linea 2', 'Linea 3']
+```
+
+### 12. Manipulación de listas y tuplas
+
+En este capitulo, se veran los metodos que posee el objeto lista.
+Algunos de ellos , tambien se encuentran disponibles para las tuplas.
+
+#### Metodos de agregado
+
+##### Agregar un elemento al final de la lista
+
