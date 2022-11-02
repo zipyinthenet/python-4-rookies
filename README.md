@@ -1543,7 +1543,276 @@ Linea 4
 En este capitulo, se veran los metodos que posee el objeto lista.
 Algunos de ellos , tambien se encuentran disponibles para las tuplas.
 
-#### Metodos de agregado
+#### Métodos de agregado
 
 ##### Agregar un elemento al final de la lista
 
+metodo: append("nuevo elemento")
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> nombres_masculinos = ["Alvaro", "Jacinto", "Miguel", "Edgardo", "David"]
+>>> nombres_masculinos.append("Jose")
+>>> nombres_masculinos
+['Alvaro', 'David', 'Edgardo', 'Jacinto', 'Jose', 'Ricky', 'Jose']
+```
+
+##### Agregar varios elementos al final de la lista
+
+metodo: extend(otra_lista)
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> nombres_masculinos.extend(["Jose", "Gerardo"])
+>>> nombres_masculinos
+['Alvaro', 'David', 'Edgardo', 'Jacinto', 'Jose', 'Ricky', 'Jose', 'Jose', 'Gerardo']
+```
+
+##### Agregar un elemento en una posición determinada
+
+metodo: insert(posicion, "nuevo elemento")
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> nombres_masculinos.insert(0, "Ricky")
+>>> nombres_masculinos
+['Ricky', 'Alvaro', 'David', 'Edgardo', 'Jacinto', 'Jose', 'Ricky', 'Jose', 'Jose', 'Gerardo']
+```
+
+#### Métodos de eliminación
+
+##### Eliminar el ultimo elemento de la lista
+
+metodo: pop()
+
+retorna: el elemento eliminado
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> nombres_masculinos.pop()
+'Gerardo'
+>>> nombres_masculinos
+['Ricky', 'Alvaro', 'David', 'Edgardo', 'Jacinto', 'Jose', 'Ricky', 'Jose', 'Jose']
+```
+
+##### Eliminar un elemento por su índice
+
+metodo: pop(indice)
+
+retorna: el elemento eliminado
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> nombres_masculinos.pop(3)
+'Edgardo'
+
+>>> nombres_masculinos
+['Ricky', 'Alvaro', 'David', 'Jacinto', 'Jose', 'Ricky', 'Jose', 'Jose']
+```
+
+##### Eliminar un elemento por su valor
+
+metodo: remove("valor")
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> nombres_masculinos.remove("Jose")
+>>> nombres_masculinos
+['Ricky', 'Alvaro', 'David', 'Jacinto', 'Ricky', 'Jose', 'Jose']
+```
+
+#### Métodos de orden
+
+##### Ordenar una lista en reversa (invertir orden)
+
+metodo: reverse()
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> nombres_masculinos.reverse()
+>>> nombres_masculinos
+['Jose', 'Jose', 'Ricky', 'Jacinto', 'David', 'Alvaro', 'Ricky']
+```
+
+##### Ordenar una lista en forma ascendente
+
+metodo: sort()
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> nombres_masculinos.sort()
+>>> nombres_masculinos
+['Alvaro', 'David', 'Jacinto', 'Jose', 'Jose', 'Ricky', 'Ricky']
+```
+
+##### Ordenar una lista en forma descendente
+
+metodo: sort(reverse=True)
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> nombres_masculinos.sort(reverse=True)
+>>> nombres_masculinos
+['Ricky', 'Ricky', 'Jose', 'Jose', 'Jacinto', 'David', 'Alvaro']
+```
+
+#### Métodos de búsqueda
+
+##### Contar cantidad de apariciones elementos
+
+metodo: count(elemento)
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> nombres_masculinos = ["Alvaro", "Miguel", "Edgardo", "David", "Miguel"]
+>>> nombres_masculinos.count("Miguel")
+2
+```
+
+##### Obtener número de índice
+
+metodo: index(elemento[, indice_inicio, indice_fin])
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> nombres_masculinos.index("Miguel")
+1
+
+>>> nombres_masculinos.index("Miguel", 2, 5)
+4
+```
+
+#### Anexo sobre listas y tuplas
+
+##### Conversión de tipos
+
+se pueden convertir listas en tuplas y viceversa
+
+metodo: list(tupla)
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> tupla = (1, 2, 3, 4)
+>>> tupla
+(1, 2, 3, 4)
+
+>>> list(tupla)
+[1, 2, 3, 4]
+```
+
+metodo: tuple(lista)
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> lista = [1, 2, 3, 4]
+>>> lista
+[1, 2, 3, 4]
+
+>>> tuple(lista)
+(1, 2, 3, 4)
+```
+
+##### Concatenación de colecciones
+
+se pueden concatenar las listas con las listas y las tuplas con las tuplas
+
+metodo:
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> lista1 = [1, 2, 3, 4]
+>>> lista2 = [3, 4, 5, 6, 7, 8]
+>>> lista3 = lista1 + lista2
+>>> lista3
+[1, 2, 3, 4, 3, 4, 5, 6, 7, 8]
+```
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> tupla1 = (1, 2, 3, 4, 5)
+>>> tupla2 = (4, 6, 8, 10)
+>>> tupla3 = (3, 5, 7, 9)
+>>> tupla4 = tupla1 + tupla2 + tupla3
+>>> tupla4
+(1, 2, 3, 4, 5, 4, 6, 8, 10, 3, 5, 7, 9)
+```
+
+##### Valor maximo y minimo
+
+obtner valor maximo y minimo de listas o de tuplas
+
+metodo: max()
+metodo: min()
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> max(tupla4)
+10
+>>> max(tupla1)
+5
+>>> min(tupla1)
+1
+>>> max(lista3)
+8
+>>> min(lista1)
+1
+```
+
+##### Contar elementos
+
+contar elementos de una lista o tupla
+
+metodo: len()
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> len(lista3)
+10
+>>> len(lista1)
+4
+```
