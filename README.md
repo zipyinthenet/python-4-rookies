@@ -26,7 +26,7 @@
 
 ### [12. Manipulacion de listas y tuplas](https://github.com/zipyinthenet/python-4-rookies#12-manipulaci%C3%B3n-de-listas-y-tuplas)
 
-### 13. Manipulacion de diccionarios
+### [13. Manipulacion de diccionarios](https://github.com/zipyinthenet/python-4-rookies#13-manipulaci%C3%B3n-de-diccionarios)
 
 ### 14. Manejo y manipulación de archivos
 
