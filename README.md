@@ -24,7 +24,7 @@
 
 ### [11. Manipulacion de cadenas de texto](https://github.com/zipyinthenet/python-4-rookies#11-manipulacion-de-cadenas-de-texto-1)
 
-### 12. Manipulacion de listas y tuplas
+### [12. Manipulacion de listas y tuplas](https://github.com/zipyinthenet/python-4-rookies#12-manipulaci%C3%B3n-de-listas-y-tuplas)
 
 ### 13. Manipulacion de diccionarios
 
