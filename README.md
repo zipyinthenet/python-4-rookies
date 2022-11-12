@@ -1816,3 +1816,213 @@ retorna:
 >>> len(lista1)
 4
 ```
+
+### 13. Manipulación de diccionarios
+
+#### Métodos de eliminación
+
+##### Vaciar un diccionario
+
+metodo: clear()
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> diccionario = {"color": "violeta", "talle": "XS", "precio": 174.25}
+>>> diccionario
+{"color": "violeta", "precio": 174.25, "talle": "XS"}
+
+>>> diccionario.clear()
+
+>>> diccionario
+{}
+```
+
+#### Métodos de agregado y creación
+
+##### Copiar un diccionario
+
+metodo: copy()
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> diccionario = {"color": "violeta", "talle": "XS", "precio": 174.25}
+>>> camiseta = diccionario.copy()
+>>> diccionario
+{"color": "violeta", "precio": 174.25, "talle": "XS"}
+
+>>> camiseta
+{"color": "violeta", "precio": 174.25, "talle": "XS"}
+
+>>> diccionario.clear()
+>>> diccionario
+{}
+
+>>> camiseta
+{"color": "violeta", "precio": 174.25, "talle": "XS"}
+
+>>> musculosa = camiseta
+>>> camiseta
+{"color": "violeta", "precio": 174.25, "talle": "XS"}
+
+>>> musculosa
+{"color": "violeta", "precio": 174.25, "talle": "XS"}
+
+>>> camiseta.clear()
+>>> camiseta
+{}
+
+>>> musculosa
+{}
+```
+
+##### Crear un nuevo diccionario desde las claves de una secuencia
+
+metodo: dict.fromkeys(secuencia[, valor por defecto])
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> secuencia = ["color", "talle", "marca"]
+>>> diccionario1 = dict.fromkeys(secuencia)
+>>> diccionario1
+{'color': None, 'marca': None, 'talle': None}
+
+>>> diccionario2 = dict.fromkeys(secuencia, 'valor x defecto')
+>>> diccionario2
+{'color': 'valor x defecto', 'marca': 'valor x defecto', 'talle': 'valor x defecto'}
+```
+
+##### Concatenar diccionarios
+
+metodo: update(diccionario)
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> diccionario1 = {"color": "verde", "precio": 45}
+>>> diccionario2 = {"talle": "M", "marca": "Lacoste"}
+>>> diccionario1.update(diccionario2)
+>>> diccionario1
+{'color': 'verde', 'precio': 45, 'marca': 'Lacoste', 'talle': 'M'}
+```
+
+##### Establecer una clave y valor por defecto
+
+metodo: setdefault("clave"[, None|valor_por_defecto])
+
+Si la clave no existe , la crea con el valor por defecto.
+Siempre retorna el valor para la clave pasada como parámetro.
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> camiseta = {"color": "rosa", "marca": "Zara"}
+>>> clave = camiseta.setdefault("talle", "U")
+>>> clave
+'U'
+
+>>> camiseta
+{'color': 'rosa', 'marca': 'Zara', 'talle': 'U'}
+
+>>> camiseta2 = camiseta.copy()
+>>> camiseta2
+{'color': 'rosa', 'marca': 'Zara', 'talle': 'U'}
+
+>>> clave = camiseta2.setdefault("estampado")
+>>> clave
+>>> camiseta2
+{'color': 'rosa', 'estampado': None, 'marca': 'Zara', 'talle': 'U'}
+
+>>> clave = camiseta2.setdefault("marca", "Lacoste")
+>>> clave
+'Zara'
+
+>>> camiseta2
+{'color': 'rosa', 'estampado': None, 'marca': 'Zara', 'talle': 'U'}
+```
+
+#### Métodos de retorno
+
+##### Obtener el valor de una clave
+
+metodo:
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+x
+```
+
+##### Saber si una clave existe en el diccionario
+
+metodo:
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+x
+```
+
+##### Obtener las claves y valores de un diccionario
+
+metodo:
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+x
+```
+
+##### Obtener las claves de un diccionario
+
+metodo:
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+x
+```
+
+##### Obtener los valores de un diccionario
+
+metodo:
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+x
+```
+
+##### Obtener la cantidad de elementos de un diccionario
+
+metodo:
+
+retorna:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+x
+```
