@@ -1957,65 +1957,230 @@ retorna:
 
 ##### Obtener el valor de una clave
 
-metodo:
+metodo: get(clave[, "valor x defecto si la clave no existe"])
 
 retorna:
 
 ```python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-x
+
+>>> camiseta
+{'color': 'rosa', 'marca': 'Zara', 'talle': 'U'}
+
+>>> camiseta.get("color")
+'rosa'
+
+>>> camiseta.get("stock")
+>>> camiseta.get("stock", "sin stock")
+'sin stock'
+
+
 ```
 
 ##### Saber si una clave existe en el diccionario
 
-metodo:
+metodo: 'clave' in diccionario
 
 retorna:
 
 ```python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-x
+
+>>> camiseta
+{'color': 'rosa', 'marca': 'Zara', 'talle': 'U'}
+
+>>> existe = 'precio' in camiseta
+>>> existe
+False
+
+>>> existe = 'color' in camiseta
+>>> existe
+True
+
 ```
 
 ##### Obtener las claves y valores de un diccionario
 
-metodo:
+metodo: items()
 
 retorna:
 
 ```python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-x
+
+diccionario = {'color': 'rosa', 'marca': 'Zara', 'talle': 'U'}
+
+for clave, valor in diccionario.items():
+    clave, valor
+
+Salida:
+('color', 'rosa')
+('marca', 'Zara')
+('talle', 'U')
+```
+
+En Python2 existia iteritems():
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+>>> a = dict(a=1, b=2)
+>>> a.iteritems()
+```
+
+En Python3 ya no existe:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+>>> a.iteritems()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'dict' object has no attribute
+'iteritems'
+```
+
+Debe emplearse items() para generar código híbrido. no obstante, tener en cuenta que los objetos retornados se verán de forma diferente en ambas versiones.
+Python3:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+>>> a.items()
+dict_items([('a', 1), ('b', 9)])
+```
+
+Python2:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+>>> a.items()
+[('a', 1), ('b', 9)]
+```
+
+Sin embargo, se itera igual en las dos:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+for tupla in a.items():
+    tupla
+('a', 1)
+('b', 9)    
 ```
 
 ##### Obtener las claves de un diccionario
 
-metodo:
+metodo: keys()
 
 retorna:
 
 ```python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-x
+
+diccionario = {'color': 'rosa', 'marca': 'Zara', 'talle': 'U'}
+for clave in diccionario.keys():
+    clave
+'marca'
+'talle'
+'color'    
+```
+
+Obtener claves en una lista:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+>>> diccionario = {'color': 'rosa', 'marca': 'Zara', 'talle': 'U'}
+>>> claves = list (diccionario.keys())
+>>> claves
+['color', 'marca', 'talle']
 ```
 
 ##### Obtener los valores de un diccionario
 
-metodo:
+metodo: values()
 
-retorna:
+retorna: 
 
 ```python
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-x
+
+diccionario = {'color': 'rosa', 'marca': 'Zara', 'talle': 'U'}
+for clave in diccionario.values():
+    clave
+
+'rosa'
+'Zara'
+'U'
 ```
 
+Obtener valores en una lista:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+diccionario = {'color': 'rosa', 'marca': 'Zara', 'talle': 'U'}
+claves = list(diccionario.values())
+```
+
+Salida:
+['Zara', 'U', 'rosa']
+
 ##### Obtener la cantidad de elementos de un diccionario
+
+Para contar los elemetos de un diccionario, al igual que con las listas y tuplas, se utiliza la funcion integrada len()
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+diccionario = {'color': 'rosa', 'marca': 'Zara', 'talle': 'U'}
+len(diccionario)
+# Salida: 3
+
+```
+
+### 14. Manejo y manipulación de archivos
+
+### 15. Manejo de archivos CSV
+
+### 16. Manipulación avanzada de cadenas de texto
+
+### 17. Creando menús de opciones
+
+### 18. Generación de registros de sistema
+
+### 19. Módulos del sistema (os, sys y subprocess)
+
+### 20. Conexiones remotas (HTTP, FTP y SSH)
+
+### 21. Bibliotecas para el manejo avanzado de archivos, en sistemas GNU/Linux
+
+### 22. Probabilidad y Estadística con Python
+
+### 23. Estadística descriptiva con Python
+
+### 24. Python como CGI para aplicaciones Web
+
+### 25. Conexiones a bases de datos con MySQL y MariaDB
+
+### 26. Programación orientada a objetos con Python
+
+
+
+##### template
 
 metodo:
 
