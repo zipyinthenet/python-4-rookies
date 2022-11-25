@@ -2154,6 +2154,72 @@ len(diccionario)
 
 ### 14. Manejo y manipulación de archivos
 
+2 niveles para trabajar con ficheros y directorios
+
+Uno de ellos es con el modulo 'os' , facilita el trabajo con el sistema de ficheros y directorios a nivel del propio S.O.
+
+Segundo nivel , permite manipular ficheros su lectura y escritura desde la propia apliación o el script creado , tratando cada fichero como un objeto.
+
+#### Modos de Apertura de un archivo
+
+Existen varios modos de abrir un fichero , leer, escribir, o leer y escribir.
+
+Cuando abres un fichero , se crea un puntero en memoria
+
+r -> solo lectura -> ubicacion puntero: inicio fichero
+rb -> solo lectura modo binario -> ubicacion puntero: inicio fichero
+r+ -> lectura y escritura -> ubicacion puntero: inicio fichero
+rb+ -> lectura y escritura modo binario -> ubicacion puntero: inicio fichero
+
+w -> solo escritura, sobreescribe fichero si existe, crea el fichero si no existe -> ubicacion puntero: inicio fichero
+wb -> solo escritura modo binario, sobreescribe fichero si existe, crea el fichero si no existe -> ubicacion puntero: inicio fichero
+w+ -> escritura y lectura, sobreescribe fichero si existe, crea el fichero si no existe -> ubicacion puntero: inicio fichero
+wb+ -> escritura y lectura modo binario, sobreescribe fichero si existe, crea el fichero si no existe -> ubicacion puntero: inicio fichero
+
+a -> agregar contenido, crea fichero si no existe -> ubicacion puntero: si fichero existe al final del fichero, si el fichero no existe, al comienzo.
+ab -> agregar contenido en modo binario, crea el fichero si no existe -> ubicacion puntero: si fichero existe al final del fichero, si el fichero no existe, al comienzo.
+a+ -> agregar contenido y lectura, crea el fichero si no existe -> ubicacion puntero: si fichero existe al final del fichero, si el fichero no existe, al comienzo.
+ab+ -> agregar contenido y lectura modo binario, crea el fichero si no existe -> ubicacion puntero: si fichero existe al final del fichero, si el fichero no existe, al comienzo.
+
+#### Algunos métodos del Objeto File
+
+El objeto file , dispone de algunos métodos , algunos de ellos son(el resto a buscar o consultar por internet):
+
+read([bytes]) -> lee el contenido de un fichero, si le pasas cantidad de bytes, leera solo esa cantidad del fichero.
+
+readlines() -> lee todas las líneas de un fichero
+
+write(cadena) -> escribe cadena en el fichero
+
+writelines(secuencia) -> secuencia será cualquier iterable cuyos elementos seran escritos uno por línea.
+
+#### Accesos a archivos mediante la estructura with
+
+La estructura with y la funcion open(), puede abrirse un fichero en cualquier modo y trabajar con él, sin necesidad de cerrarlo o destruir el puntero.
+
+leer un fichero:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+with open("archivo.txt", "r") as archivo:
+    contenido = archivo.read()
+```
+
+escribir en un archivo:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+contenido = """
+    Este será el contenido del nuevo archivo.
+    El archivo tendrá varias líneas.
+"""
+
+with open("archivo.txt", "r") as archivo:
+    archivo.write(contenido)
+```
+
 ### 15. Manejo de archivos CSV
 
 ### 16. Manipulación avanzada de cadenas de texto
