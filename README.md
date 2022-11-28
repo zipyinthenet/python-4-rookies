@@ -2222,6 +2222,75 @@ with open("archivo.txt", "r") as archivo:
 
 ### 15. Manejo de archivos CSV
 
+#### Algunos ejemplos archivos CSV
+
+csv "comma separated values" (valores separados por coma) , archivos de texto plano , destinados al almacenamiento de datos.
+
+ejemplos:
+
+- Datos meteorologicos separados por ';'
+
+ID;DATA;VV;DV;T;HR;PPT;RS;P
+0;2016-03-01 00:00:00;;;9.9;73;;;
+
+- Puntuaje por jugadores de un torneo separados por coma
+
+nombre,cantidad,año
+Maria,858,1930
+
+- Datos de empresas registradas separados por ',' y datos entre '""'
+
+"numero_correlativo","tipo_societario","detalles"
+"10","10","bar de barrio"
+
+- Datos almacenados en archivos de TXT con formato similar en un CSV
+
+FECHA       TMAX    TMIN    NOMBRE
+-----       ----    ----    ---------------
+07122017    28.0    19.0    PELUQUERIAS
+
+#### Trabajar con archivos CSV desde Python
+
+Modulo 'csv' , facilita el parseo de los datos de archivos CSV , para lectura y escritura.
+
+El modulo 'csv' se utiliza en combinación con la estructura 'with' y la función 'open' para leer , generar archivo.
+El modulo 'csv' para su analisis(parsing).
+
+##### Lectura de archivos CSV
+
+contenido de archivo.csv
+
+0;2016-03-01 00:00:00;;;9.9;73;;;
+
+codigo
+
+salida:
+resultado
+
+cuando el fichero CSV tiene una cabecera, es necesario saltar dicho encabezado:
+
+contenido archivo.csv
+
+ID;DATA;VV;DV;T;HR;PPT;RS;P
+0;2016-03-01 00:00:00;;;9.9;73;;;
+
+codigo
+
+salida:
+resultado
+
+Otra forma de leer arhivos CSV con cabeceras, es usar el objetivo 'DictReader' en vez de 'reader' y asi acceder solo al valor de las columnas deseadas, por su nombre:
+
+codigo
+
+salida:
+resultado
+
+##### Escritura de archivos CSV
+
+x
+
+
 ### 16. Manipulación avanzada de cadenas de texto
 
 ### 17. Creando menús de opciones
