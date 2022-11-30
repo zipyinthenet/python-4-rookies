@@ -2262,10 +2262,21 @@ contenido de archivo.csv
 
 0;2016-03-01 00:00:00;;;9.9;73;;;
 
-codigo
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from csv import reader
+
+with open("archivo.csv", "r") as archivo:
+    documento = reader(archivo, delimiter=';', quotechar='"')
+    for fila in documento:
+        ' '.join(fila)
+
+```
 
 salida:
-resultado
+'0 2016-03-01 00:00:00  9.9 73  '
 
 cuando el fichero CSV tiene una cabecera, es necesario saltar dicho encabezado:
 
@@ -2274,22 +2285,111 @@ contenido archivo.csv
 ID;DATA;VV;DV;T;HR;PPT;RS;P
 0;2016-03-01 00:00:00;;;9.9;73;;;
 
-codigo
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from csv import reader
+
+with open("archivo.csv", "r") as archivo:
+    documento = reader(archivo, delimiter=';', quotechar='"')
+    cabeceras = next(documento)
+    for fila in documento:
+        ' '.join(fila)
+
+```
 
 salida:
-resultado
+'0 2016-03-01 00:00:00  9.9 73  '
 
 Otra forma de leer arhivos CSV con cabeceras, es usar el objetivo 'DictReader' en vez de 'reader' y asi acceder solo al valor de las columnas deseadas, por su nombre:
 
-codigo
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from csv import DictReader
+
+with open("archivo.csv", "r") as archivo:
+    documento = DictReader(archivo, delimiter=';', quotechar='"')
+    for fila in documento:
+        fila['DATA']
+
+```
 
 salida:
-resultado
+'0 2016-03-01 00:00:00'
 
 ##### Escritura de archivos CSV
 
-x
+Escritura de un CSV sin cabecera:
 
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from csv import writer
+
+with open("datos.csv", "w") as archivo:
+    doc = writer(archivo, delimiter=';', quotechar='"')
+    doc.writerows(matriz)
+```
+
+En el ejemplo anterior, una matriz podria ser una lista de listas con igual cantidad de elementos. Por ejemplo:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+matriz = [
+    ['Juan', 373, 1970],
+    ['Ana', 124, 1983],
+    ['Pedro', 901, 1650],
+    ['Rosa', 300, 2000],
+    ['Juana', 75, 1975],
+]
+```
+
+Lo anterior generaria un fichero llamado datos.csv
+
+```bash
+cat datos.csv
+
+Juan;373;1970
+Ana;124;1983
+Pedro;901;1650
+Rosa;300;2000
+Juana;75;1975
+```
+
+Escritura de un csv con cabeceras:
+
+La matriz siguiente se compone de una lista de diccionarios donde las claves coinciden:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+matriz = [
+    dict(jugador='Juan', puntos=300, año=2005)
+    dict(jugador='Ana', puntos=100, año=2022)
+    dict(jugador='Pedro', puntos=50, año=2021)
+    dict(jugador='Rosa', puntos=70, año=2001)
+    dict(jugador='Juana', puntos=80, año=1998)
+]
+
+from csv import DictWriter
+
+cabeceras = ['jugador', 'puntos', 'año']
+
+with open("datos.csv", "w") as archivo:
+    documento = DictWriter(
+        archivo, delimiter=';',
+        quotechar='"',
+        fieldnames=cabeceras
+    )
+    documento.writeheader()
+    documento.writerows(matriz)
+
+```
 
 ### 16. Manipulación avanzada de cadenas de texto
 
