@@ -2388,10 +2388,109 @@ with open("datos.csv", "w") as archivo:
     )
     documento.writeheader()
     documento.writerows(matriz)
-
 ```
 
 ### 16. Manipulación avanzada de cadenas de texto
+
+Python tiene soporte nativo para busquedas con expresiones regulares.
+
+Expresion regular es un patron de caracteres de reconomiento.
+
+Cuando se aplica una expresion regular a una cadena de texto , permite encontrar fragmentos de texto que coincidan con esa expresion.
+
+Para crear patrones y definirlos se crean mediante caracteres de forma simbolica.
+
+Ejemplo:
+ '^ho' -> cadena que empieza por 'ho'
+ 'la$' -> cadena que finaliza por 'la'
+
+ Lista de caracteres simbolicos para expresiones regulares:
+
+ - Caracteres de posicion:
+  '^' -> inicio de cadena
+  '$' -> final de cadena
+
+ - Cuantificadores:
+  '?' -> cero o uno
+  '*' -> cero o mas 
+  '+' -> uno o mas
+  '{n}' -> n veces
+  '{n,}' -> n o mas veces
+  '{,m}' -> entre 0 y n veces
+  '{n,m}' -> entre n y m veces
+
+ - Caracteres de posicion , agrupamiento:
+  '(...)' -> grupo exacto
+  '[...]' -> caracteres opcionales y rangos
+  '|' -> operador logico <<or>> (A|B)
+  '-' -> usado para expresar un rango [a-z]
+
+ - Caracteres de formato:
+  '\' -> caracter de escape para expresar literales
+  '\d' -> digito
+  '\D' -> caracter que no sea un digito
+  '.' -> cualquier caracter excepto el salto de linea
+  '\n' -> salto de linea
+  '\s' -> espacio en blanco
+  '\S' -> caracter que no sea espacio en blanco
+  '\w' -> palabra
+  '\W' -> caracter que no sea una palabra
+
+#### Expresiones regulares en Python
+
+El modulo 're' sirve para realizar busquedas mediante expresiones regulares.
+Este modulo tiene la funcion 'search' para realizar busquedas mediante sintaxis:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+search(expresion, cadena)
+```
+
+Una busqueda mediante funcion 'search' , en caso de encontrar una coincidencia , retorna un objeto 'SRE_Match'.
+Se accede a cada grupo de coincidencia con el metodo 'group(indice)'
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from re import search
+cadena = "hola mundo"
+ser = search("a\sm", cadena)
+ser.group(0)
+```
+'a m'
+
+En la administracion de sistemas Linux , el uso del constructor 'with' para abrir ficheros, combinado con metodos del 'objeto string' y 'expresiones regulares' , se puede emplear para analisis de registros del sistema.
+
+ejemplo con '/var/log/auth.log'
+
+Dec  3 20:07:16 serverrpi sshd[27860]: Failed password for invalid user joselito from x.x.x.x port 51072 ssh2
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from re import search
+
+with open ("/var/log/auth.log", "r") as f:
+    log = f.read()
+
+regex = "(.)+: Failed password for invalid user [a-z]+\n"
+ser = search(regex, log)
+```
+
+>>> ser.group(0)
+Dec  3 20:07:16 serverrpi sshd[27860]: Failed password for invalid user joselito from x.x.x.x port 51072 ssh2
+
+ - expresion anterior:
+
+(.)+ -> indica cualquier caracter una o mas veces. Esto coincide con la fecha del registro, comando e ID del proceso: 'Dec  3 20:07:16 serverrpi sshd[27860]' La cadena que sigue, es un literal.
+
+[a-z]+ -> coincide con el nombre de usuario ya que indica cualquier letra entra la a y la z, repetidas una o mas veces.
+
+\n -> el salto de linea coincidiria con el final del registro.
+
+Se puede usar este mismo sistema para analisis de registros de servicios , sistema , etc.. por ejemplo Apache , syslog , suricata u otros..
+
 
 ### 17. Creando menús de opciones
 
