@@ -2494,6 +2494,127 @@ Se puede usar este mismo sistema para analisis de registros de servicios , siste
 
 ### 17. Creando menús de opciones
 
+#### Creando menus de opciones basico
+
+Para crear un menu de opciones basico en terminal:
+
+- 1. todo el script debe estar organizado en funciones
+
+- 2. cada funcion debe tener su documentacion para definir que hace cada funcion.
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+def leer_archivo():
+    """Leer archivo CSV"""
+    return "leer" 
+```
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+def escribir_archivo():
+    """Escribir archivo CSV"""
+    return "escribir"
+```
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+def _sumar_numeros(lista):
+    """Sumar los numeros de una lista"""
+    return "privada"
+```
+
+- 3. Despues se define una lista con el nombre de las funciones , que seran accesibles desde el menu:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+funciones = ['leer_archivo', 'escribir_archivo']
+```
+
+Para automatizar la generacion del menu , basta con:
+
+- lista del paso3
+
+- funcion 'locals()'
+
+- atributo '__doc__'
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+numero = 1  # se usara luego para acceder a la funcion
+menu = "elija una opcion:\n"
+
+for funcion in funciones:
+    menu += "\t{}. {}\n".format(
+        numero, locals()[funcion].__doc__)
+    numero += 1  # incrementa el numero en cada iteracion
+
+print(menu)
+opcion = int(input("Su opcion: "))
+```
+
+Para acceder dinamicamente a la funcion elegida por el usuario, el truco consistira en emplear la opcion elegida por el usuario , de forma que la opcion elegida sea el indice para acceder al nombre de la funcion desde la lista, y recurrir nuevamente a 'locals' para invocar la funcion.
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+funcion = funciones[opcione - 1]
+# se obtiene el nombre de la funcion
+
+locals()[funcion]()
+# se invoca a la funcion mediante 'locals()'
+```
+
+#### Creando menus de opciones con argparse
+
+En el apartado anterior se muestra la forma de realizar un menu de forma simple.
+
+En este apartado vamos a ver como analizar argumentos, pasados al script, por linea de comandos, mediante el modulo 'argparse'
+
+##### Paso 1. importar modulo
+
+importar la clase ArgumentParser del modulo argparse:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from argparse import ArgumentParser
+```
+
+##### Paso 2. construccion de un objeto ArgumentParser
+
+Se construye un objeto 'ArgumentParser' para establecer los argumentos que el programa recibira.
+
+Los parametros aceptados por el metodo constructor del objeto 'ArgumentParser' (funcion '__init__') son todos opcionales.
+
+algunos parametros:
+
+- prog -> el nombre del programa.
+
+- description -> descripcion del programa que se mostrara en la ayuda.
+
+- epilog -> texto mostrado al final de la ayuda.
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from argparse import ArgumentParser
+
+argp = ArgumentParser(
+    description='Descripcion breve del programa',
+    epilog='Copyright 2022 Autor bajo licencia'
+)
+```
+
+##### Paso 3. Agregado de argumentos y configuracion
+
+Para agregar un argumento
+
+
 ### 18. Generación de registros de sistema
 
 ### 19. Módulos del sistema (os, sys y subprocess)
