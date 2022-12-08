@@ -2765,6 +2765,192 @@ Recordar que la especificacion de la codificacion de caracteres UTF-8, en python
 
 ### 18. Generación de registros de sistema
 
+En caso de que un programa o un script del sistema , guarde registro , se puede emplear modulo 'logging'
+
+El modulo logging provee cinco niveles de registros:
+
+- DEBUG -> 10 -> utilizado para monitorizar el funcionamiento de un programa , para depurar y obtener info.
+
+- INFO -> 20 -> registrar eventos afirmativos , un registro detallado de tareas ejecutadas de forma satisfactoria
+
+- WARNING -> 30 -> emitir una alerta sobre un evento determinado , informacion indicativa de un posible fallo
+
+- ERROR -> 40 -> registrar un error , informacion cuando no logra llevarse a cabo una tarea X.
+
+- CRITICAL -> 50 -> registrar un error que frene la ejecucion normal del programa , cuando un error fatal es capturado y el programa esta impedido.
+
+nivel por defecto es WARNING , en caso de querer mostrarse otro nivel como INFo o DEBUG, debera modificarse el nivel de registro por defecto.
+
+Los registros se muestran por pantalla o se graban en un fichero.
+
+#### Principales elementos del modulo logging
+
+Constantes: representan distintos niveles de registro. 
+
+- constantes: INFO, DEBUG, WARNING, ERROR, CRITICAL
+
+Clase 'basicConfig' , es usada para inicializar un registro , configurar el nivel de registro por defecto, y opcionalmente , establecer la ruta del archivo de registro y el modo de escritura.
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from logging import basicConfig, INFO
+basicConfig(
+    filename='/var/log/programa.log',
+    filemode='a',
+    level=INFO
+)
+```
+
+los parametros compartidos en ambas ramas del lenguaje, para 'basicConfig' con los siguientes:
+
+- filename: ruta del archivo
+
+- filemode: modo de apertura (comunmente 'a' [append, valor por defecto] o 'w' [escritura])
+
+- format: establece el formato en el que se generan los registros
+
+- datefmt: formato de fecha y hora que se utilizara en los registros 
+
+- level: nivel de registro (cualquiera de las 5 constantes)
+
+- stream (esta opcion no sera abarcada en el curso)
+
+Algunos de las variables admitidas como parte del valor del parametro format, son las siguientes:
+
+[logrecord-attributes]([](https://docs.python.org/3/library/logging.html#logrecord-attributes))
+
+    asctime         %(asctime)s
+    created         %(created)f
+    filename        %(filename)s
+    funcName        %(funcName)s
+    levelname       %(levelname)s
+    levelno         %(levelno)s
+    lineno          %(lineno)d
+    module          %(module)s
+    msecs           %(msecs)d
+    message         %(message)s
+    name            %(name)s
+    pathname        %(pathname)s
+    process         %(process)d
+    processName     %(processName)s
+    relativeCreated %(relativeCreated)d
+    thread          %(thread)d
+    threadName      %(threadName)s
+
+Para una descripcion detallada , ver la seccion 'logRecords Attributes' en la documentacion oficial de Python. Ambas ramas conservan las mismas variables.
+
+'[%(asctime)s] [%(levelname)s] [pid %(process)d] MYAPP myErrorLevel Alert: %(message)s'
+
+El ejemplo anterior, producira un registro similar al siguiente:
+
+[2018-04-20 00:34:42,803] [WARNING] [pid 12318] MYAPP myErrorLevel Alert: posible violacion de seguridad
+
+Para establecer el formato que tendra la fecha, mediante el parametro 'datefmt' se pueden emplear las siguientes directivas:
+
+[time.html#time.strftime](https://docs.python.org/3/library/time.html#time.strftime)
+
+- Funciones de registro: utilizadas par amostrar o grabar los diferentes mensajes de registro:
+
+info(), debug(), warning(), error(), critical()
+
+A estas funciones se les debe pasar como parametro el mensaje que se deea almacenar en el registro:
+
+funcion("mensaje a grabar")
+
+Tambien es posible emplear variables como parte del mensaje, utilizando modificadores formato en la cadena, y pasando las variables como argumentos:
+
+funcion("mensaje %s %i", variable_string, variable_entero)
+
+siguiente codigo es un ejemplo y permite entender como funciona niveles de registro y mensajes, bibliotecas:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from logging import basicConfig, error, info, INFO
+from sys import argv
+
+basicConfig(
+    filename='ejemplo_logging.log',
+    filemode='a',
+    level=INFO,
+    format='[%(asctime)s] [%(levelname)s] [pid %(process)d] %(message)s',
+    datefmt="%d/%m/%Y %H:%M"
+)
+
+try:
+    with open(argv[1], "a") as f:
+        f.write(argv[2])
+
+    info("Agregado el texto %s al archivo %s", argv[2], argv[1])
+except:
+    error("Se produjo un error al intentar escribir en el archivo %s", argv[1])
+
+try:
+    with open("/var/log/foo.log", "a") as f:
+        f.write("Mensaje de prueba")
+except (Exception) as problema:
+    error(problema)                    
+```
+
+#### Obtencion de argumentos por linea de comandos con argv
+
+'argv' , una lista del modulo system, almacena los argumentos pasados al script por linea de comandos, siendo la ruta del archivo o nombre del ejecutable, el primer elemento de la lista.
+
+#### Captura basica de excepciones con try y except
+
+La estructura 'try / except' permite cpaturar excepciones que de otro modo provocarian la finalizacion abrupta del script, cuando una excepcion es lanzada.
+
+cuando una instruccion o algoritmo tiene la posibilidad de fallar (normalmente, cuando depende de valores obtenidos al vuelo), puede colarse el codigo , dentro de la estructura 'try' y utilizar 'excep' para ejecutar una accion en caso de que el intento de ejecucion de codigo del 'try' falle. Su sintaxis podria interpretarse como la siguiente:
+
+intentar:
+    ejecutar esto
+si falla:
+    haz esto otro
+
+Pasado al lenguaje de Python:
+
+try:
+    # instruccion que puede fallar
+except:
+    # instruccion a ejecutar en caso de que el codigo del try, falle
+
+El tipo de excepcion lanzada, tambien es posible capturarlo:
+
+try:
+    # instruccion que puede fallar
+except (TipoDeExcepcion1):
+    # instruccion a ejecutar en caso de que se produzca
+    # una excepcion de tipo TipoDeExcepcion1
+except (TipoDeExcepcion2):
+    # instruccion a ejecutar en caso de que se produzca
+    # una excepcion de tipo TipoDeExcepcion2
+
+Tambien es admisible capturar mas de un tipo de excepcion de forma simultanea:
+
+try:
+    # instruccion que puede fallar
+except (TipoDeExcepcion1, TipoDeExcepcion2):
+    # instruccion a ejecutar en caso de que se produzca
+    # una excepcion de tipo TipoDeExcepcion1 o
+    # TipoDeExcepcion2
+
+E incluso, puedo capturarse una descripcion del error, aunque no se conozca el tipo de excepcion:
+
+try:
+    # instruccion que puede fallar
+except (Exception) as descripcion_del_problema:
+    # instruccion a ejecutar en caso de que se produzca
+    # una excepcion de tipo TipoDeExcepcion1 o
+    # TipoDeExcepcion2
+
+Los diferentes 'tipos de excepciones', pueden estudiarse en la documentacion oficial de Python2 y de Python3.
+[tipos de excepciones Python2](https://docs.python.org/2/library/exceptions.html)
+[tipos de excepciones Python3](https://docs.python.org/3.7/library/exceptions.html)
+
+Para un nivel inicial se recomienda trabajar solo con except.
+
 ### 19. Módulos del sistema (os, sys y subprocess)
 
 ### 20. Conexiones remotas (HTTP, FTP y SSH)
