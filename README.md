@@ -2659,6 +2659,110 @@ parametros opcionales:
 
 [argparse-HOWTO](https://docs.python.org/es/3/howto/argparse.html)
 
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+argp.add_argument(
+    'vocal',  # argumento posicional
+    nargs='+',  # admite uno o mas valores
+    choices=['a', 'e', 'o'],  # valores posibles
+    metavar='VOCAL',  # nombre de la variable a mostrar en la ayuda
+    help='Vocal abierta',  # texto a mostrar como ayuda
+)
+```
+
+Siguiendo el ejemplo anterior, si el programa se ejecutara sin argumentos:
+
+usuario@host:~$ ./ejemplo.py
+
+daria el siguiente error:
+
+usage: ejemplo [-h] VOCAL [VOCAl ...]
+curl: ejemplo: the following arguments are required:
+VOCAL
+
+y si se ejecutase con la bandera de opcion -h:
+
+usuario@host:~$ ./ejemplo.py -h
+
+arrojaria la siguiente ayuda:
+
+usage: ejemplo [-h] VOCAL [VOCAl ...]
+
+Descripcion del programa
+
+positional arguments:
+  VOCAL             Vocal abierta
+
+optional arguments:
+  -h, --help     show this help message and exit
+
+##### Paso 4. Generacion del analisis (parsing) de argumentos
+
+argumentos = argp.parse_args()
+
+El metodo 'parse_args' es el encargado de generar un objeto cuyas propiedades seran los argumentos recibidos por linea de comandos. A cada argumento se accedera mediante la sintaxis:
+
+objeto_generado.nombre_del_argumento
+
+Por ejemplo:
+
+argumentos.foo
+
+Ejemplo con 'argparse':
+
+- Menu basado en el programa curl:
+
+Intentar imprimir los valores obtenidos mediante 'argumentos.parametro'
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from argparse import ArgumentParser
+
+descripcion_del_programa = "{}, {}".format(
+    "herramienta para transferir datos desde o hacia un servidor",
+    "utilizando uno de los protocolos compatibles"
+)
+
+argp = ArgumentParser(
+    prog='curl',
+    description=descripcion_del_programa,
+)
+
+argp.add_argument(
+    '-H', '--header',  # banderas
+    action='append',  # lista de valores
+    nargs='+',  # admite uno o mas valores
+    type=str,  # convertir los valores a string
+    metavar='LINE',  # nombre de opcion a mostrar en la ayuda
+    help='Cabecera adicional a incluir en la solicitud HTTP a enviar'
+)
+
+argp.add_argument(
+    '-d', '--data',
+    action='append',
+    nargs='+',
+    type=str,
+    help='envia los datos especificados en una solicitud post, al servidor http'
+)
+
+argp.add_argument(
+    'url',
+    type=str,
+    metavar='URL',
+    help='URL a la cual realizar la solicitud'
+)
+
+argumentos = argp.parse_args()
+
+```
+
+observaciones:
+
+Recordar que la especificacion de la codificacion de caracteres UTF-8, en python3 no es necesario ya que por defecto se interpreta, se utiliza para hacerlo compatible con python2 y frente a algunos tipos de objetos y biblitecas.
+
 ### 18. Generación de registros de sistema
 
 ### 19. Módulos del sistema (os, sys y subprocess)
