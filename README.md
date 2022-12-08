@@ -2612,8 +2612,52 @@ argp = ArgumentParser(
 
 ##### Paso 3. Agregado de argumentos y configuracion
 
-Para agregar un argumento
+Para agregar un argumento puede emplearse el metodo 'add_argument'
 
+Existen dos tipos de argumentos para declarar:
+
+- argumentos posicionales: todos aquellos que sean declarados con un nombre en vez de usar una bandera 
+
+- argumentos con opciones (banderas / flags): todos aquellos que empleen el prefijo de opcion '-'
+
+Un argumento definido como 'foo' es posicional , mientras que otro se define de la siguiente manera '-f' o '--foo' sera una opcion:
+
+argp.add_argument('foo')  # argumento posicional
+argp.add_argument('--foo')  # opcion foo
+argp.add_argument('-f')  # opcion f
+
+'add_argumento' puede recibir , un solo nombre de argumento posicional o una lista de banderas de opcion (flags)
+
+En el siguiente ejemplo , en caso de ejecutarse sin ningun argumento , el fallo se produciria por la ausencia del argumento posicional 'directorio' , pero no por la ausencia de las opciones -f o --foo
+
+argp.add_argument('directorio')  # solo un nombre posicional
+argp.add_argument('-f', '--foo')  # una lista de banderas de opcion
+
+###### Configuracion de argumentos
+
+metodo 'add_argument' , ademas del nombre de argumento posicional y opcion , puede recibir de forma no obligatoria, algunos parametros que establecen la forma en la que el nombre de argumento o bandera seran tratados.
+
+parametros opcionales:
+
+- 'action' -> accion a realizar con el parametro -> store (almacenar valor) , append (agregarlo a una lista) -> store (valor por defecto)
+
+- 'nargs' -> cantidad de valores admitidos
+
+- 'default' -> valor por defecto para el argumento
+
+- 'type' -> tipo de datos
+
+- 'choices' -> lista de valores posibles
+
+- 'required' -> indica si el argumento es obligatorio
+
+- 'help' -> texto de ayuda a mostrar para el argumento
+
+- 'metavar' -> el nombre del argumento que se empleara en la ayuda
+
+- 'dest' -> nombre de la variable en la que sera almacenado el argumento
+
+[argparse-HOWTO](https://docs.python.org/es/3/howto/argparse.html)
 
 ### 18. Generación de registros de sistema
 
