@@ -2966,8 +2966,10 @@ Algunas funcionalidades:
 |accion|comando Linux|   Metodo   |
 |------|-------------|------------|
 | acceso a archivos y directorios |
-|      |             |            |
 | obtener directorio actual     |     pwd     |  getcwd()  |
+| cambiar directorio     |     cd ruta     |  chdir(path)  |
+| mover directorio trabajo a raiz     |     cd     |  chroot()  |
+| modificar permisos     |     chmod     |  chmod(path,permisos)  |
 |      |             |            |
 |      |             |            |
 
