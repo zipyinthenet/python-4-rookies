@@ -2973,8 +2973,7 @@ Algunas funcionalidades:
 | mover directorio trabajo a raiz     |     cd     |  chroot()  |
 | modificar permisos     |     chmod     |  chmod(path,permisos)  |
 | cambiar propietario     |     chown     |  chown(path,permisos)  |
-|      |             |            |
-|      |             |            |
+
 
 ### 20. Conexiones remotas (HTTP, FTP y SSH)
 
