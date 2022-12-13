@@ -2978,6 +2978,10 @@ Algunas funcionalidades:
 | eliminar fichero     |     rm     |  remove(path)  |
 | eliminar directorio     |     rmdir     |  rmdir(path)  |
 | renombrar fichero     |     mv     |  rename(actual,nuevo)  |
+| crear enlace simbolico     |     ln -s     |  symlink(origen,destino)  |
+| establecer mascara creacion ficheros     |     umask     |  umask(mascara)  |
+| obtener listado ficheros y directorios     |     ls -a     |  listdir(path)  |
+| obtener estado fichero     |     stat     |  stat(path)  |
 
 
 ### 20. Conexiones remotas (HTTP, FTP y SSH)
