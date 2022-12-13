@@ -2960,6 +2960,8 @@ El modulo 'os' provee funciones que operan a bajo nivel.
 
 #### El modulo OS
 
+[doc-modulo-os](https://docs.python.org/es/3/library/os.html#)
+
 Con este modulo permite operar a bajo nivel con funcionalidades del sistema operativo. 
 Algunas funcionalidades:
 
@@ -2970,6 +2972,7 @@ Algunas funcionalidades:
 | cambiar directorio     |     cd ruta     |  chdir(path)  |
 | mover directorio trabajo a raiz     |     cd     |  chroot()  |
 | modificar permisos     |     chmod     |  chmod(path,permisos)  |
+| cambiar propietario     |     chown     |  chown(path,permisos)  |
 |      |             |            |
 |      |             |            |
 
