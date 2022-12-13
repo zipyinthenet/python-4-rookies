@@ -2982,6 +2982,7 @@ Algunas funcionalidades:
 | establecer mascara creacion ficheros     |     umask     |  umask(mascara)  |
 | obtener listado ficheros y directorios     |     ls -a     |  listdir(path)  |
 | obtener estado fichero     |     stat     |  stat(path)  |
+| evaluacion de ficheros y directorios (modulo os.path) |
 
 
 ### 20. Conexiones remotas (HTTP, FTP y SSH)
