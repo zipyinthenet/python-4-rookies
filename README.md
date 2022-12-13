@@ -2973,6 +2973,11 @@ Algunas funcionalidades:
 | mover directorio trabajo a raiz     |     cd     |  chroot()  |
 | modificar permisos     |     chmod     |  chmod(path,permisos)  |
 | cambiar propietario     |     chown     |  chown(path,permisos)  |
+| crear directorio     |     mkdir     |  mkdir(path[, modo])  |
+| crear directorios recursivos     |     mkdir -p     |  mkdirs(path[, modo])  |
+| eliminar fichero     |     rm     |  remove(path)  |
+| eliminar directorio     |     rmdir     |  rmdir(path)  |
+| renombrar fichero     |     mv     |  rename(actual,nuevo)  |
 
 
 ### 20. Conexiones remotas (HTTP, FTP y SSH)
