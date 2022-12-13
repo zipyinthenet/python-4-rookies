@@ -2967,7 +2967,7 @@ Algunas funcionalidades:
 |------|-------------|------------|
 | acceso a archivos y directorios |
 |      |             |            |
-|      |     pwd     |  getcwd()  |
+| obtener directorio actual     |     pwd     |  getcwd()  |
 |      |             |            |
 |      |             |            |
 
