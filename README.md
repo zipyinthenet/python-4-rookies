@@ -2966,7 +2966,7 @@ Algunas funcionalidades:
 |accion|comando Linux|   Metodo   |
 |------|-------------|------------|
 | acceso a archivos y directorios |
-|------|-------------|------------|
+|      |             |            |
 |      |     pwd     |  getcwd()  |
 |      |             |            |
 |      |             |            |
