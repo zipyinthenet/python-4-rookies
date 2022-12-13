@@ -2953,6 +2953,24 @@ Para un nivel inicial se recomienda trabajar solo con except.
 
 ### 19. Módulos del sistema (os, sys y subprocess)
 
+Los modulos 'os' y 'subprocess' permiten manejar funcionalidades del sistema operativo y procesos del sistema.
+El modulo 'sys'  provee acceso a variables del interprete del lenguaje.
+El modulo 'shutil' permite manejar archivos a alto nivel.
+El modulo 'os' provee funciones que operan a bajo nivel.
+
+#### El modulo OS
+
+Con este modulo permite operar a bajo nivel con funcionalidades del sistema operativo. 
+Algunas funcionalidades:
+
+|accion|comando Linux|   Metodo   |
+|------|-------------|------------|
+| acceso a archivos y directorios |
+|------|-------------|------------|
+|      |     pwd     |  getcwd()  |
+|      |             |            |
+|      |             |            |
+
 ### 20. Conexiones remotas (HTTP, FTP y SSH)
 
 ### 21. Bibliotecas para el manejo avanzado de archivos, en sistemas GNU/Linux
