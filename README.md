@@ -3108,6 +3108,78 @@ comando = 'ls -ls /home/usuario/descargas'
 proceso = Popen(split(comando))
 ```
 
+#### Capturar la salida estandar y los errores
+
+se pueden emplear tuberias para capturar la Salida estandar y los errores:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from shlex import split
+from subprocess import Popen
+
+comando = 'ls -ls /home/usuario/descargas'
+proceso = Popen(split(comando), stdout=PIPE, stderr=PIPE)
+salida = proceso.stdout.read()
+errores = proceso.stderr.read()
+
+if not errores:
+    accion a realizar si no hubo errores
+else:
+    accion a realizar si hubo errores
+```
+
+#### Emplear la salida de un comando como entrada de otro
+
+en la linea de comandos , se puede emplear la salida de un comando para redirigir la salida a otro comando.
+Con '|' pipe.
+ejemplo:
+
+```bash
+ls -ls /home/user/descargas/fichero.txt | grep 'user'
+```
+
+la salida de 'ls' se utiliza como entrada del comando 'grep'
+
+Cuando usamos 'Popen' la salida de un comando se encuentra disponible en:
+
+'proceso_creado.stdout'
+
+Esta salida se puede usar como valor del argumento 'stdin' , del segundo proceso creado por 'Popen'.
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from shlex import split
+from subprocess import Popen, PIPE
+
+#comandos necesarios
+ls_command = "ls -ls /home/user/descargas/fichero.txt"
+grep_command = "grep 'user'"
+
+# procesos
+ls_process = Popen(
+    split(ls_command), stdout=PIPE, stderr=PIPE)
+
+grep_process = Popen(
+    split(grep_command),
+    stdin=ls_process.stdout,
+    #salida del proceso anterior como entrada
+    stdout=PIPE,
+    stderr=PIPE
+)
+
+#ejecucion
+grep_process.stdout.read()
+```
+
+
+
+
+
+
+
+
 ### 20. Conexiones remotas (HTTP, FTP y SSH)
 
 ### 21. Bibliotecas para el manejo avanzado de archivos, en sistemas GNU/Linux
