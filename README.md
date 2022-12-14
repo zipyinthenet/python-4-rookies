@@ -3173,7 +3173,20 @@ grep_process = Popen(
 grep_process.stdout.read()
 ```
 
+#### Variables y funciones del modulo sys
 
+[modulo-sys-documentation](https://docs.python.org/3/library/sys.html)
+
+algunas variables del modulo 'sys':
+
+
+|variable|Descripcion|
+|------|-------------|
+| sys.argv | retorna una lista con todos los argumentos pasados |
+| sys.executable | retorna el path absoluto del path ejecutado |
+| sys.path | retorna una lista con las rutas empleadas para buscar ficheros |
+| sys.platform | retorna la plataforma donde se esta ejecutando el interprete |
+| sys.version | retorna el numero de version de Python e informacion adicional |
 
 
 
