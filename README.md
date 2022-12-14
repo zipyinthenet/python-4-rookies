@@ -2998,7 +2998,115 @@ Algunas funcionalidades:
 | obtener valor variable entorno     |     $VARIABLE     |  getenv(variable)  |
 | obtener datos del s.o.     |     uname -a     |  uname()  |
 | obtener UID     |     id -u     |  getuid()  |
+| Obtener ID del proceso     |     pgrep     |  getpid()  |
+| crear variable de entorno (del sistema)     |     export $VARIABLE     |  puntenv(variable, valor)  |
+| forzar la escritura del cache al disco     |     sync     |  sync()  |
+| matar un proceso     |     kill     |  kill(pid, señal)  |
 
+#### variables de entorno: os.environ
+
+'environ' es un direccionario del modulo 'os'.
+Este direccionario tiene variables de entorno , las cuales adquieren un valor dependiente del sistema donde se ejecuten.
+
+ver variables de entorno disponibles de 'environ':
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from os import environ
+
+for variable, valor in environ.items():
+    variable, valor
+```
+
+#### Ejecucion simplificada de comandos del sistema
+
+la funcion 'system' del modulo 'os' , permite ejecutar comandos del sistema sin manejar la E/S estandar o los errores.
+
+Se lanza directamente sobre el s.o.
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from os import system
+
+command = "curl http://unawebdeconsulta"
+system(command)
+```
+
+con la funcion 'system' , podemos redireccionar la salida de los comandos o los errores.
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from os import system
+
+command = "curl http://unawebdeconsulta > salida"
+system(command)
+```
+
+para acceder a la salida almacenada , se puede leer como si fuera un fichero:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from os import system
+
+command = "curl http://unawebdeconsulta > salida"
+system(command)
+
+with open('salida', 'r') as f:
+    salida = f.read()
+```
+
+#### Ejecucion de comandos del sistema mediante 'Popen' y 'shlex.split'
+
+A traves de la clase 'Popen' del modulo 'subprocess' , es posible ejecutar comandos directamente sobre el s.o. y manipular tanto la E/S estandard como errores.
+
+la funcion 'split' del modulo 'shlex' puede emplearse como complemento de 'Popen' , para el parseado de cadenas de texto como lista de comandos y argumentos.
+
+La clase 'Popen' (process open) , abre un nuevo proceso en el sistema , y permite manejar tuberias para manejar la E/S estandard y errores.
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from subprocess import Popen, PIPE
+proceso = Popen(<comando/argumentos>, stdout=PIPE, stderr=PIPE)
+```
+
+el primer argumento pasado a 'Popen' debe ser una lista. Debe contener el comando , las opciones(banderas) , y argumentos. 
+Por ejemplo:
+
+ls -ls /home/usuario/descargas
+
+ls -> argumento
+
+-ls -> lista opciones
+
+/home/usuario/descargas -> argumento
+
+total 3 elementos
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from subprocess import Popen, PIPE
+lista = ['ls', '-ls', '/home/usuario/descargas']
+proceso = Popen(lista)
+```
+
+Sin embargo , la instruccion completa podria escribirse en una cadena de texto.
+Y con la funcion 'split' del modulo 'shlex' , emplearla para generar la lista necesaria para Popen:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from shlex import split
+from subprocess import Popen
+
+comando = 'ls -ls /home/usuario/descargas'
+proceso = Popen(split(comando))
+```
 
 ### 20. Conexiones remotas (HTTP, FTP y SSH)
 
