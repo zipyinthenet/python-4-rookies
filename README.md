@@ -3188,7 +3188,24 @@ algunas variables del modulo 'sys':
 | sys.platform | retorna la plataforma donde se esta ejecutando el interprete |
 | sys.version | retorna el numero de version de Python e informacion adicional |
 
+La funcion 'exit()' del modulo 'sys' se emplea para finalizar un programa o script de forma abrupta.
 
+ejemplo:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from shlex import split
+from subprocess import Popen, PIPE
+
+ls = "ls -ls /hom/noexiste"
+grep = "grep 'user'"
+
+ps_ls = Popen(split(ls), stdout=PIPE, stderr=PIPE)
+
+if ps_ls.stderr.read():
+    exit("Terminacion abrupta tras error en comando ls")
+```
 
 
 
