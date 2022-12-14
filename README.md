@@ -2967,7 +2967,7 @@ Algunas funcionalidades:
 
 |accion|comando Linux|   Metodo   |
 |------|-------------|------------|
-| acceso a archivos y directorios |
+| ACCESO A FICHEROS Y DIRECTORIOS |
 | obtener directorio actual     |     pwd     |  getcwd()  |
 | cambiar directorio     |     cd ruta     |  chdir(path)  |
 | mover directorio trabajo a raiz     |     cd     |  chroot()  |
@@ -2994,7 +2994,7 @@ Algunas funcionalidades:
 | un directorio     |     -     |  path.isdir(path)  |
 | un enlace simbolico     |     -     |  path.islink(path)  |
 | un punto de montaje     |     -     |  path.ismount(path)  |
-| Funcionalidades del sistema operativo |
+| FUNCIONALIDADES DEL S.O. |
 | obtener valor variable entorno     |     $VARIABLE     |  getenv(variable)  |
 | obtener datos del s.o.     |     uname -a     |  uname()  |
 | obtener UID     |     id -u     |  getuid()  |
