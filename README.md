@@ -2983,6 +2983,21 @@ Algunas funcionalidades:
 | obtener listado ficheros y directorios     |     ls -a     |  listdir(path)  |
 | obtener estado fichero     |     stat     |  stat(path)  |
 | evaluacion de ficheros y directorios (modulo os.path) |
+| obtener ruta absoluta     |     -     |  path.abspath(path)  |
+| obtener directorio base     |     -     |  path.basename(path)  |
+| saber si un directorio existe     |     -     |  path.exists(path)  |
+| conocer ultimo acceso a un directorio     |     -     |  path.getatime(path)  |
+| conocer tamaño del directorio     |     -     |  path.getsize(path)  |
+| saber si una ruta es:     |     -     |    |
+| absoluta     |     -     |  path.isabs(path)  |
+| un fichero     |     -     |  path.isfile(path)  |
+| un directorio     |     -     |  path.isdir(path)  |
+| un enlace simbolico     |     -     |  path.islink(path)  |
+| un punto de montaje     |     -     |  path.ismount(path)  |
+| Funcionalidades del sistema operativo |
+| obtener valor variable entorno     |     $VARIABLE     |  getenv(variable)  |
+| obtener datos del s.o.     |     uname -a     |  uname()  |
+| obtener UID     |     id -u     |  getuid()  |
 
 
 ### 20. Conexiones remotas (HTTP, FTP y SSH)
