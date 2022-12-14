@@ -3205,9 +3205,27 @@ ps_ls = Popen(split(ls), stdout=PIPE, stderr=PIPE)
 
 if ps_ls.stderr.read():
     exit("Terminacion abrupta tras error en comando ls")
+
+ps_grep = Popen(
+    split(grep),
+    stdin=ps_ls.stdout,
+    stdout=PIPE,
+    stderr=PIPE
+)    
 ```
 
+- el mensaje pasado a la funcion 'exit()' es opcional
 
+- la funcion 'exit()' puede recibir un entero representativo del motivo de salida (el 0 es valor por defecto, indica salida normal)
+
+- la funcion 'exit()' del modulo 'sys' tiene un proposito similar a la constante incorporada exit , sin embargo ambos elementos no responden de la misma manera
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+import sys
+print sys.exit()
+```
 
 
 ### 20. Conexiones remotas (HTTP, FTP y SSH)
