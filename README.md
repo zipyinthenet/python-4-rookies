@@ -3312,6 +3312,47 @@ El cierre de una conexion HTTP se realiza mediante el metodo 'close'
 http.close()
 ```
 
+ejemplo de una peticion POST a un host local:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from http.client import HTTPConnection
+
+http = HTTPConnection('juanproyecto.local', port=80, timeout=30)
+parametros = "nombre=Juan&apellido=Perez"
+cabeceras = {"Content-Type": "application/x-www-form-urlencoded"}
+http.request("POST", "/foor/bar", headers=cabeceras, body=parametros)
+respuesta = http.getresponse()
+codigo = respuesta.status
+descripcion = respuesta.reason
+body = respuesta.read()
+
+body
+codigo
+descripcion
+```
+
+#### Conexiones remotas via FTP
+
+x
+
+#### Solicitando la contraseña con getpass
+
+x
+
+#### Conexiones SSH con Paramiko
+
+x
+
+##### Requisitos previos
+
+x
+
+##### Uso de Paramiko
+
+x
+
 ### 21. Bibliotecas para el manejo avanzado de archivos, en sistemas GNU/Linux
 
 ### 22. Probabilidad y Estadística con Python
