@@ -3230,6 +3230,88 @@ print sys.exit()
 
 ### 20. Conexiones remotas (HTTP, FTP y SSH)
 
+Python tiene las siguientes librerias:
+
+
+- libreria 'http' para realizar conexiones a los protocolos HTTP/HTTPS
+
+- libreria 'ftplib' para realizar conexiones a los protocolos FTP
+
+- libreria 'Paramiko' creada por Robey Pointer , para realizar conexiones al protocolo SSH
+
+#### Conexiones remotas via HTTP y HTTPS
+
+El modulo 'client' de la libreria 'http' nos da la posibilidad de conectar al protocolo http.
+
+Mediante las clases 'HTTPConnection' y 'HTTPSConnection'
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from http.client import HTTPConnection
+http = HTTPConnection('host.com', port=80, timeout=10)
+```
+
+port y timeout son 2 parametros opcionales.
+
+las solicitudes se realizan mediante metodo 'request' y este requiere de dos parametros posicionales.
+
+- metodo HTTP usado (GET,POST...)
+
+- recurso HTTP (urn nombre de recurso uniforme)
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from http.client import HTTPConnection
+http = HTTPConnection('host.com', port=80, timeout=10)
+
+http.request("GET", "/foor/bar")
+```
+
+se pueden añadir otros parametros:
+
+- headers -> diccionario con campos de cabecera
+
+- body -> cadena de texto
+
+parametros utiles para peticiones que requieren envio de información.
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from http.client import HTTPConnection
+http = HTTPConnection('host.com', port=80, timeout=10)
+
+parametros = "nombre=Juan&apellido=Perez"
+cabeceras = {
+    "Content-Type": "application/x-www-form-urlencoded"
+}
+http.request(
+    "POST", "/foo/bar",
+    headers=cabeceras, body=parametros
+)
+```
+
+La respuesta mediante el metodo 'getresponse' , retorna un objeto 'HTTPResponse' , en sus propiedades este metodo posee 'status' (codigo de respuesta HTTP), y 'reason' (descripcion de la respuesta), entre sus metodos 'read' , retorna el cuerpo de la respuesta:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+respuesta = http.getresponse()
+codigo = respuesta.status
+descripcion = respuesta.reason
+body = respuesta.read()
+```
+
+El cierre de una conexion HTTP se realiza mediante el metodo 'close'
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+http.close()
+```
+
 ### 21. Bibliotecas para el manejo avanzado de archivos, en sistemas GNU/Linux
 
 ### 22. Probabilidad y Estadística con Python
