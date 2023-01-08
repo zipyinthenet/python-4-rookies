@@ -3335,7 +3335,79 @@ descripcion
 
 #### Conexiones remotas via FTP
 
-x
+La biblioteca 'ftplib' permite conexiones mediante el protocolo FTP
+
+Para crear una instancia , se dispone de las clases 'FTP' (sin cifrado) y 'FTP_TLS' (con cifrado TLS evolución SSL)
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from ftplib import FTP
+ftp = FTP()
+```
+
+Para abrir una conexión se empleta el metodo 'connect' , admite parametros como , host y puerto
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from ftplib import FTP
+ftp = FTP()
+
+ftp.connect('algunhost.com', 21)
+```
+
+Si es necesario usar el modo pasivo , se dispone del metodo 'set_pasv'
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from ftplib import FTP
+ftp = FTP()
+ftp.connect('algunhost.com', 21)
+
+ftp.set_pasv(True)
+
+```
+
+La autenticación se realiza mediante el metodo 'login' , recibe por parametros , usuario y contraseña
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from ftplib import FTP
+ftp = FTP()
+ftp.connect('algunhost.com', 21)
+ftp.set_pasv(True)
+
+ftp.login('algunusuario', 'clave')
+```
+
+Para cerrar una conexión se puede usar el metodo 'quit' , esto cierra la conexion de ambos lados (cliente y servidor)
+El metodo 'close' cierra la conexión unilateralmente.
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from ftplib import FTP
+ftp = FTP()
+ftp.connect('algunhost.com', 21)
+ftp.set_pasv(True)
+ftp.login('algunusuario', 'clave')
+
+ftp.quit()
+```
+
+Otros metodos:
+
+|Accion|Metodo|
+|------|-------------|
+| Directorios | |
+| Lisar directorios | dir() , dir('ruta/a/listar') |
+| Crear un directorio | mkd('ruta/a/algun-dir') |
+| Moverse a un directorio | cwd('ruta/a/algun-dir') |
+| Eliminar un directorio | rmd('ruta/a/dir-a-borrar') |
+| Obtener directorio actual | pwd() |
 
 #### Solicitando la contraseña con getpass
 
