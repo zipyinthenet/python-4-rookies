@@ -3408,10 +3408,35 @@ Otros metodos:
 | Moverse a un directorio | cwd('ruta/a/algun-dir') |
 | Eliminar un directorio | rmd('ruta/a/dir-a-borrar') |
 | Obtener directorio actual | pwd() |
+| Archivos | |
+| Recuperar un archivo remoto | retrbinary('RETR origen', open('/ruta/destino', 'w').write) |
+| Enviar un archivo local | storbinary('STOR destino/remoto.txt', open('/origen/local.txt', 'r')) |
+| Eliminar un archivo | delete('archivo/a/eliminar') |
+| Renombrar (mover) un archivo | rename('origen', 'destino') |
 
 #### Solicitando la contraseña con getpass
 
-x
+La biblioteca 'getpass' , permite solicitar mediante un input , un password , para no tener que trabajar con el password en crudo en el codigo fuente.
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from getpass import getpass
+clave = getpass('Ingresar clave: ')
+```
+
+La funcion 'getpass' puede usarse de forma conjunta con metodo login.
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from ftplib import FTP
+from getpass import getpass
+
+ftp = FTP()
+ftp.connect('algunhost.com', 21)
+ftp.login('algunusuario', getpass('Clave FTP: '))
+```
 
 #### Conexiones SSH con Paramiko
 
