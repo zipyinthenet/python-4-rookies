@@ -3425,7 +3425,7 @@ from getpass import getpass
 clave = getpass('Ingresar clave: ')
 ```
 
-La funcion 'getpass' puede usarse de forma conjunta con metodo login.
+La funcion 'getpass' puede usarse de forma conjunta con metodo login (de esta forma se evita escribir la clave en crudo dentro del codigo fuente).
 
 ```python
 #!/usr/bin/env python3
@@ -3440,7 +3440,9 @@ ftp.login('algunusuario', getpass('Clave FTP: '))
 
 #### Conexiones SSH con Paramiko
 
-x
+La biblioteca 'paramiko' se de instalar de forma adicional (no esta en las bibliotecas de python).
+Se puede instalar a traves de PyPI (gestor de paquetes de python).
+En debian se puede instalar desde apt.
 
 ##### Requisitos previos
 
