@@ -3446,11 +3446,107 @@ En debian se puede instalar desde apt.
 
 ##### Requisitos previos
 
-x
+Para instalar un paquete desde PyPI , se necesita herramienta 'pip'.
+
+```bash
+apt install python-pip  # para Python2
+apt install python3-pip  # para Python3
+```
+
+Las instalaciones para Python2 y Python3 , se manejan de forma independiente.
+Por tanto habra que instalar 'Paramiko' en ambas versiones.
+
+mediante root:
+
+```bash
+pip install paramiko  # para Python2
+pip3 install paramiko  # para Python3
+```
+
+[paramiko](https://www.paramiko.org/installing.html)
 
 ##### Uso de Paramiko
 
-x
+Una conexion SSH se inicializa con la creación de un objeto 'SSHClient':
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from paramiko import SSHClient, AutoAddPolicy
+
+ssh = SSHClient()
+```
+
+La conexión como la autenticación , se realizara de forma separada , para tener un mayor control.
+
+Para la autenticación mediante llave pública , se empleara 'set_missing_host_key_policy' , a fin de localizar las llaves y facilitar el intercambio de las mismas:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+ssh.set_missing_host_key_policy(AutoAddPolicy())
+```
+
+Normalmente , el uso de este metodo no deberia ser necesario , y bastaria con emplear 'load_system_host_keys':
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+ssh.load_system_host_keys()
+```
+
+Utilizar 'set_missing_host_key_policy' , evita algoritmos complejos para captura y tratamiento de errores.
+
+La conexion al servidor , se realizara mediante el metodo 'connect' , recibe con parametros , el host o IP del server y puerto de conexión , y nombre de usuario.
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+ssh.connect('x.x.x.x', 22, 'usuario')
+```
+
+Cuando se requiera autenticacion por contraseña , se puede pasar como cuarto parametro el password:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+ssh.connect('x.x.x.x', 22, 'usuario', 'clave')
+```
+
+La ejecucion de comandos en el server , se realiza mediante el metodo 'exec_command' , donde se le pasa una cadena de instruccion que se desea ejecutar.
+Esto retorna tres objetos , de E/S estandar y errores:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+entrada, salida, error = ssh.exec_command('ls -la')
+```
+
+Se pueden leer los objetos de salida y error mediante 'read':
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+salida.read()
+error.read()
+```
+
+La entrada puede ser escrita mediante write:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+entrada.write('entrada que espera el comando \n')
+salida.read()
+```
+
+Para cerrar la conexion , se utiliza close:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+ssh.close()
+```
 
 ### 21. Bibliotecas para el manejo avanzado de archivos, en sistemas GNU/Linux
 
