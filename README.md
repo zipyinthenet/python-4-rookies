@@ -3550,6 +3550,108 @@ ssh.close()
 
 ### 21. Bibliotecas para el manejo avanzado de archivos, en sistemas GNU/Linux
 
+#### Compresión y descompresión de archivos con las bibliotecas tarfile y zipfile
+
+Biblioteca 'tarfile' se le da uso para leer , comprimir y descomprimir ficheros (.tar, .tar.gz., tar.bz2, tar.xz)
+Otra biblioteca como 'zipfile' se utiliza para leer , comprimir y descomprimir , para los ficheros .zip
+
+##### La biblioteca tarfile
+
+Para leer un fichero comprimido , para comprimir , o descomprimir un fichero TarFile , se hace mediante la función 'open' del modulo tarfile.
+
+Los modos lectura y escritura , se realiza mediante la sintaxis:
+
+```bash
+<modo>:<formato>
+```
+
+En 'modo' puede ser 'r' (lectura) o 'w' (escritura) , y en 'formato' , gz (gzip) , bz2 (bzip2) o , solo en Python3 xz (lzma)
+
+| Modo de apertura  | Comando tar |
+| ------------- | ------------- |
+| `[r|w]:gz`  | `tar -[c|x]z`  |
+| `[r|w]:bz2`  | `tar -[c|x]j`  |
+| `[r|w]:xz`  | `tar -[c|x]J`  |
+
+###### Descomprimir ficheros
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from tarfile import open as tar_open
+
+with tar_open("origen.tar.bz2", "r:bz2") as tar:
+	  tar.extractall('carpeta/destino')
+```
+
+###### Comprimir ficheros
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from tarfile import open as tar_open
+
+with tar_open("carpeta/destino.tar.gz", "w:gz") as tar:
+	  tar.add('foo.txt')
+	  tar.add('bar.txt')
+	  tar.add('baz.txt')
+```
+
+###### Observaciones sobre el codigo
+
+Se usa un alias , para que el metodo '**open**' de la biblioteca '**tarfile**' , no sobrescriba la funcion incorporada '**open**'.
+Se emplea la estructura '**with**' , para no utilizar el metodo '**close**'.
+
+###### Observaciones de seguridad
+
+Se debe verificar el nombre de los ficheros comprimidos a la hora de descomprimirse , el nombre del fichero puede contener '**/**' o '**. .**' , de manera que al descomprimir , se podrian descomprimir en un directorio del sistema no esperado.
+
+###### Observaciones de compatibilidad entre versiones
+
+El formato lzma solo esta disponible en la rama 3 de Python (Python3).
+Para que un script sea compatible con cualquier versión , usar los formatos , '**gzip**' o '**bzip2**'.
+
+##### La biblioteca zipfile
+
+Ejemplo descomprimir o comprimir ficheros zip:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from zipfile import ZipFile
+
+# Comprimir ficheros zip
+with ZipFile('carpeta/destino.zip', 'w') as z:
+    z.write('foo.txt')
+    z.write('bar.txt')
+    z.write('baz.txt')
+
+# Descomprimir ficheros zip
+with ZipFile('carpeta/origen.zip', 'r') as z:
+    z.extractall('carpeta/destino', pwd='clave')
+    # el parametro pwd (contraseña) es opcional
+```
+
+#### Manejo de ficheros temporales con la biblioteca tempfile
+
+x
+
+##### Lectoescritura de ficheros temporales
+
+x
+
+#### Busqueda de ficheros con las bibliotecas glob y fnmatch
+
+x
+
+###### Uso de glob
+
+x
+
+###### Uso de fnmatch con os.listdir
+
+x
+
 ### 22. Probabilidad y Estadística con Python
 
 ### 23. Estadística descriptiva con Python
