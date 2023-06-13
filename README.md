@@ -3634,11 +3634,70 @@ with ZipFile('carpeta/origen.zip', 'r') as z:
 
 #### Manejo de ficheros temporales con la biblioteca tempfile
 
-x
+En caso de que un script , guarde temporalmente ficheros , no es buena práctica que el mismo script los guarde y los elimine.
+Tampoco que se guarden en el directorio '/tmp'.
+Se debe emplear la biblioteca '**tempfile**'
 
 ##### Lectoescritura de ficheros temporales
 
-x
+Cuando se crean objetos de ficheros temporales mediante la clase '**TemporaryFile**' del modulo '**tempfile**' , los ficheros se crean y se destruyen en el mismo tiempo de ejecución. (la destruccion se lleva a cabo al cerrar el fichero)
+
+En caso de usar la estructura '**with**' al finalizar la estructura , el fichero se habra eliminado.
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from tempfile import TemporaryFile
+
+with TemporaryFile() as tmp:
+    # aqui el fichero existe
+
+    # aqui el fichero ya no existe
+```
+
+Los ficheros temporales escritos , para que sean escritos , requieren que el contenido se pase como un **objeto tipo bytes** (y no una cadena).
+Este requerimiento es exigencia de Python3 , aunque en Python2 esta soportado.
+Para que una cadena sea combertido a bytes , bastaria con especificar el tipo:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from tempfile import TemporaryFile
+
+with TemporaryFile() as tmp:
+    tmp.write(b"Cadena de texto que se pasara a bytes")
+```
+
+Finalmente se debe tener en cuenta que una vez escrito , el cursor estara al final del fichero.
+Cuando quiera leer retornada una cadena nula.
+Para ello habra que mover el cursor al byte 0 a fin de poder leerlo:
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from tempfile import TemporaryFile
+
+with TemporaryFile() as tmp:
+    tmp.write(b"Cadena de texto que se pasara a bytes")
+    # ... acciones intermedias
+    tmp.seek(0)  # se mueve el cursos al byte 0
+    contenido = tmp.read()
+```
+
+Observacion:
+Los ficheros temporales creados con **TemporaryFile** , no persisten en memoria , sino en disco.
+Se almacenan en el directorio temporal del sistema.
+En caso de querer conocer el directorio temporal , invocar la funcion **gettempdir()**
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from tempfile import TemporaryFile, gettempdir
+
+with TemporaryFile() as tmp:
+    tmp.write(b"Cadena de texto")
+    tmp_dir = gettempdit()
+```
 
 #### Busqueda de ficheros con las bibliotecas glob y fnmatch
 
