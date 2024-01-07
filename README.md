@@ -1,4 +1,4 @@
-# CURSO python3
+7# CURSO python3
 ## Python 4 rookies
 
 ### INDICE
@@ -28,17 +28,17 @@
 
 ### [13. Manipulacion de diccionarios](https://github.com/zipyinthenet/python-4-rookies#13-manipulaci%C3%B3n-de-diccionarios)
 
-### 14. Manejo y manipulación de archivos
+### [14. Manejo y manipulación de archivos](https://github.com/zipyinthenet/python-4-rookies#14-manejo-y-manipulaci%C3%B3n-de-archivos-1)
 
-### 15. Manejo de archivos CSV
+### [15. Manejo de archivos CSV](https://github.com/zipyinthenet/python-4-rookies#15-manejo-de-archivos-csv-1)
 
-### 16. Manipulación avanzada de cadenas de texto
+### [16. Manipulación avanzada de cadenas de texto](https://github.com/zipyinthenet/python-4-rookies#16-manipulaci%C3%B3n-avanzada-de-cadenas-de-texto-1)
 
-### 17. Creando menus de opciones
+### [17. Creando menus de opciones](https://github.com/zipyinthenet/python-4-rookies#17-creando-men%C3%BAs-de-opciones)
 
-### 18. Generacion de registros de sistema
+### [18. Generacion de registros de sistema](https://github.com/zipyinthenet/python-4-rookies#18-generaci%C3%B3n-de-registros-de-sistema)
 
-### 19. Modulos del sistema(os, sys y subprocess)
+### [19. Modulos del sistema(os, sys y subprocess)](https://github.com/zipyinthenet/python-4-rookies#19-m%C3%B3dulos-del-sistema-os-sys-y-subprocess)
 
 ### 20. Conexiones remotas (HTTP, FTP y SSH)
 
