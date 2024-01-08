@@ -40,9 +40,9 @@
 
 ### [19. Modulos del sistema(os, sys y subprocess)](https://github.com/zipyinthenet/python-4-rookies#19-m%C3%B3dulos-del-sistema-os-sys-y-subprocess)
 
-### 20. Conexiones remotas (HTTP, FTP y SSH)
+### [20. Conexiones remotas (HTTP, FTP y SSH)](https://github.com/zipyinthenet/python-4-rookies#20-conexiones-remotas-http-ftp-y-ssh-1)
 
-### 21. Bibliotecas para el Manejo avanzado de archivos, en sistemas GNU/LINUX
+### [21. Bibliotecas para el Manejo avanzado de archivos, en sistemas GNU/LINUX](https://github.com/zipyinthenet/python-4-rookies#21-bibliotecas-para-el-manejo-avanzado-de-archivos-en-sistemas-gnulinux-1)
 
 ### 22. Probabilidad y Estadistica con Python
 
@@ -53,6 +53,8 @@
 ### 25. Conexiones a bases de datos con MySQL y MariaDB
 
 ### 26. Programación orientada a objetos con Python
+
+...
 
 ### 1. Primer acercamiento al Scripting
 
@@ -3701,15 +3703,64 @@ with TemporaryFile() as tmp:
 
 #### Busqueda de ficheros con las bibliotecas glob y fnmatch
 
-x
+Estas bibliotecas permiten buscar ficheros que coincidan con un patron(con el mismo estilo empleado en sistemas Linux o Unix)
+Mientras que el modulo **glob** busca ficheros que coinciden con un patron.
+**fnmatch** verifica si un patron coincide con el nombre de un fichero.
+
+###### simbolos interpretados
+
+| Simbolo  | Significado |
+| ------------- | ------------- |
+| `*`  | `cualquier coincidencia`  |
+| `?`  | `coincidencia con un unico caracter`  |
+| `[secuencia]`  | `coincidencia con cualquier caracter de la secuencia`  |
+| `[!secuencia]`  | `coincidencia con cualquier caracter , excepto los de la secuencia`  |
 
 ###### Uso de glob
 
-x
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from glob import glob
+glob('*.txt')
+```
+`['foo.txt', 'baz.txt', 'bar.txt']`
+
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from glob import glob
+glob('*[!of].txt')
+```
+`['baz.txt', 'bar.txt']`
 
 ###### Uso de fnmatch con os.listdir
 
-x
+```python
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from os import listdir
+from fnmatch import fnmatch
+for archivo in listdir('.'):
+... archivo, fnmatch(archivo, '*[!0-9].txt')
+...
+```
+
+`('3.r', False)`
+`('foo.gif', False)`
+`('.bar', False)`
+`('carpeta', False)`
+`('foo.txt', True)`
+`('baz.txt', True)`
+`('origen.tar.xz', False)`
+`('.foo', False)`
+`('2.r', False)`
+`('bar.txt', True)`
+`('.baz', False)`
+`('origen.tar.bz2', False)`
+`('a.r', False)`
+`('1.r', False)`
+`('origen.tar.gz', False)`
 
 ### 22. Probabilidad y Estadística con Python
 
